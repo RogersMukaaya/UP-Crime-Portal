@@ -1,0 +1,73 @@
+/////////////////////////////////
+//           FONT           //
+/////////////////////////////////
+$display-font: 'Inter', sans-serif;
+
+/////////////////////////////////
+//           COLORS            //
+/////////////////////////////////
+$lead: #090049;
+$black: #000000;
+$white: #FFFFFF;
+$primary: #4a8eff;
+$primary-hover: #4a8eff;
+$primary-active: #4a8eff;
+$secondary: #6c757d;
+$tertiary: #72838C;
+$secondary-hover: #6c757d;
+$secondary-active: #6c757d;
+$success: #18ce0f;
+$success-hover: #18ce0f;
+$success-active: #18ce0f;
+$info: #2CA8FF;
+$info-hover: #2CA8FF;
+$info-active: #2CA8FF;
+$warning: #FFB236;
+$warning-hover: #FFB236;
+$warning-active: #FFB236;
+$danger: #ff5062;
+$danger-hover: #ff5062;
+$danger-active: #ff5062;
+$green: #30b570;
+$blue: #0073ff;
+$purple: #8557D3;
+$red: #ff5062;
+
+
+/////////////////////////////////
+//           GRAYS           //
+/////////////////////////////////
+$gray-30: #444f54;
+
+
+
+/////////////////////////////////
+//           CONTAINERS           //
+/////////////////////////////////
+$primary-container: #F6F6F6;
+
+// color states
+$quaternary: #E2E6E8;
+$border: $quaternary;
+
+
+
+/////////////////////////////////
+//       SHADOW VALUES         //
+/////////////////////////////////
+// generic
+$shadow-low: 0px 0px 1px rgba(#0b0d0e, 0.1),
+0px 2px 4px rgba(#0b0d0e, 0.13);
+$shadow-mid: 0px 0px 2px rgba(#0b0d0e, 0.1),
+0px 4px 8px rgba(#0b0d0e, 0.13);
+$shadow-high: 0px 1px 4px rgba(#0b0d0e, 0.1),
+0px 8px 16px rgba(#0b0d0e, 0.13);
+// container-specific
+$shadow-card: 0px 0px 1px rgba(#0b0d0e, 0.1),
+0px 1px 4px rgba(#0b0d0e, 0.1);
+$shadow-card-hover: $shadow-mid;
+$shadow-modal: 0px 4px 16px rgba(#0b0d0e, 0.18),
+0px 24px 64px rgba(#0b0d0e, 0.22);
+$shadow-dropdown: 0px 0px 2px rgba(#0b0d0e, 0.1),
+0px 2px 6px rgba(#0b0d0e, 0.15);
+
