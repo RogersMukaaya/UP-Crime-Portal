@@ -9,17 +9,17 @@
 </template>
 
 <script>
-import filterContainer from "@/components/filterContainer.vue";
-import caseCard from "@/components/caseCard.vue";
-import createCase from "@/components/createCase.vue";
+import FilterContainer from "@/components/FilterContainer.vue";
+import CaseCard from "@/components/CaseCard.vue";
+import CreateCase from "@/components/CreateCase.vue";
 
 export default {
   name: "cases",
 
   components: {
-    "filter-container": filterContainer,
-    "case-card": caseCard,
-    "create-case": createCase
+    "filter-container": FilterContainer,
+    "case-card": CaseCard,
+    "create-case": CreateCase
   },
 
   data: function() {

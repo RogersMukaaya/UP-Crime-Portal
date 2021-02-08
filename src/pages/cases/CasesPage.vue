@@ -7,15 +7,15 @@
 
 <script>
 // @ is an alias to /src
-import casesSideNavbar from "@/components/casesSideNavbar.vue";
-import cases from "@/components/cases.vue";
+import CasesSideNavbar from "@/components/CasesSideNavbar.vue";
+import Cases from "@/components/Cases.vue";
 
 export default {
   name: "Home",
 
   components: {
-    "cases-sidebar": casesSideNavbar,
-    cases: cases
+    "cases-sidebar": CasesSideNavbar,
+    cases: Cases
   }
 };
 </script>

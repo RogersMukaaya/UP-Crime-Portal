@@ -3,7 +3,7 @@
     <router-link :to="{ name: 'case-details' }">
       <div class="header">
         <div class="header-left">
-          <h1>Robbery in Kireka</h1>
+          <h1>Vehicle</h1>
           <p>#33467</p>
         </div>
         <div class="date-badge">

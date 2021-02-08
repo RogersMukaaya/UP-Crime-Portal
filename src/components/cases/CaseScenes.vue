@@ -1,22 +1,17 @@
 <template>
-  <div class="main-content">
-    <div class="case-card-container">
-      <case-scene-card v-for="(card, index) in cards" :key="index" />
-      <create-case v-if="isCreateNewCase" @close-modal="closeCreateCaseModal" />
-    </div>
+  <div class="case-card-container">
+    <case-scene-card v-for="(card, index) in cards" :key="index" />
   </div>
 </template>
 
 <script>
-import caseSceneCard from "@/components/cases/caseSceneCard.vue";
-import createCase from "@/components/createCase.vue";
+import CaseSceneCard from "@/components/cases/CaseSceneCard.vue";
 
 export default {
-  name: "cases",
+  name: "CasesScenes",
 
   components: {
-    "case-scene-card": caseSceneCard,
-    "create-case": createCase
+    "case-scene-card": CaseSceneCard,
   },
 
   data: function() {
@@ -45,14 +40,6 @@ export default {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 12px;
-  margin-top: 12px;
-}
-
-.main-content {
-  width: 100%;
-  margin: 77px 46px;
-
-  display: flex;
-  flex-direction: column;
+  margin-top: 28px;
 }
 </style>

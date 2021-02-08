@@ -5,11 +5,11 @@
         <i class="material-icons">close</i>
       </span>
       <div class="modal-header">
-        <h1>Create a Case</h1>
+        <h1>Create a Scene</h1>
       </div>
       <div class="modal-body">
         <div class="select-dropdown">
-          <p class="label">Name</p>
+          <p class="label">Type</p>
           <div class="select-dropdown-container">
             <div class="select-items-container">
               <div class="current-item">
@@ -23,33 +23,13 @@
             </span>
           </div>
         </div>
-        <div class="row-inputs-numbers">
-          <div class="case-number">
+        <div class="case-number">
             <label class="label" for="name">Case Number</label>
             <input type="number" name="name" placeholder="33467" />
-          </div>
-          <div class="scene-number">
-            <label class="label" for="name">Scenes</label>
-            <div class="scenes-count">
-              <p>
-                0
-              </p>
-              <button class="add-scene">
-                +
-              </button>
-            </div>
-          </div>
-          <div class="scene-number">
-            <label class="label" for="name">Leads</label>
-            <div class="scenes-count">
-              <p>
-                0
-              </p>
-              <button class="add-scene">
-                +
-              </button>
-            </div>
-          </div>
+        </div>
+        <div class="case-number">
+            <label class="label" for="name">Location</label>
+            <input type="type" name="name" placeholder="Kampala" />
         </div>
         <div class="row-inputs-date-time">
           <div class="case-date">
@@ -68,44 +48,6 @@
               <span class="material-icons">
                 insert_photo
               </span>
-            </div>
-            <button class="add">
-              Add
-            </button>
-          </div>
-        </div>
-        <div class="add-victims">
-          <p class="label">Add Victims</p>
-          <div class="add-victims-container">
-            <div class="added-victims">
-              <div class="avatar-wrapper">
-                <div class="avatar">
-                  <i class="mdi mdi-account-circle"></i>
-                </div>
-                <div class="avatar-info">
-                  <p>Opio Gideon</p>
-                  <small>Officer</small>
-                </div>
-              </div>
-            </div>
-            <button class="add">
-              Add
-            </button>
-          </div>
-        </div>
-        <div class="add-victims">
-          <p class="label">Add Suspects</p>
-          <div class="add-victims-container">
-            <div class="added-victims">
-              <div class="avatar-wrapper">
-                <div class="avatar">
-                  <i class="mdi mdi-account-circle"></i>
-                </div>
-                <div class="avatar-info">
-                  <p>Opio Gideon</p>
-                  <small>Officer</small>
-                </div>
-              </div>
             </div>
             <button class="add">
               Add
@@ -146,7 +88,7 @@
 
 <script>
 export default {
-  name: "createCase"
+  name: "CreateNewScene"
 };
 </script>
 
@@ -187,72 +129,66 @@ export default {
     .modal-body {
       padding-left: 35px;
 
-      .select-dropdown {
-        display: flex;
-        flex-direction: column;
-        width: 600px;
+        .select-dropdown {
+            display: flex;
+            flex-direction: column;
+            width: 600px;
 
-        .label {
-          margin: 0;
-          padding-bottom: 5px;
-          font-size: 14px;
-          font-weight: 600;
-          color: $secondary-dark;
-        }
-
-        .select-dropdown-container {
-          display: flex;
-          justify-content: space-between;
-          border: 1px solid $border;
-          border-radius: 4px;
-
-          .select-items-container {
-            .current-item {
-              p {
-                margin-left: 16px;
+            .label {
+                margin: 0;
+                padding-bottom: 5px;
                 font-size: 14px;
-                font-weight: 400;
-                color: $tertiary;
-              }
+                font-weight: 600;
+                color: $secondary-dark;
             }
-          }
 
-          span {
-            padding: 12px;
-            color: $secondary;
-          }
+            .select-dropdown-container {
+                display: flex;
+                justify-content: space-between;
+                border: 1px solid $border;
+                border-radius: 4px;
+
+                .select-items-container {
+                    .current-item {
+                    p {
+                        margin-left: 16px;
+                        font-size: 14px;
+                        font-weight: 400;
+                        color: $tertiary;
+                    }
+                    }
+                }
+
+                span {
+                    padding: 12px;
+                    color: $secondary;
+                }
+            }
         }
-      }
-
-      .row-inputs-numbers {
-        display: flex;
-        justify-content: space-between;
-        padding-top: 37px;
-        width: 600px;
 
         .case-number {
-          display: flex;
-          flex-direction: column;
-          width: 206px;
-          padding-right: 16px;
+            display: flex;
+            flex-direction: column;
+            padding-right: 16px;
+            padding-top: 37px;
 
-          .label {
-            margin: 0;
-            padding-bottom: 5px;
-            font-size: 14px;
-            font-weight: 600;
-            color: $secondary-dark;
-          }
+            .label {
+                margin: 0;
+                padding-bottom: 5px;
+                font-size: 14px;
+                font-weight: 600;
+                color: $secondary-dark;
+            }
 
-          input {
-            width: 100%;
-            height: 47px;
-            border: 1px solid $border;
-            border-radius: 4px;
-            outline: none;
-            // padding-left: 16px;
-            padding: 0 16px;
-          }
+            input {
+                width: 600px;
+                height: 47px;
+                border: 1px solid $border;
+                border-radius: 4px;
+                outline: none;
+                // padding-left: 16px;
+                padding: 0 16px;
+            }
         }
 
         .scene-number {
@@ -301,7 +237,7 @@ export default {
             }
           }
         }
-      }
+
       .row-inputs-date-time {
         width: 600px;
         display: flex;

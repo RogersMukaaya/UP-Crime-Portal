@@ -100,6 +100,7 @@ export default {
     font-weight: 600;
     color: $lead;
     border-radius: 4px;
+    cursor: pointer;
 
     span {
       margin-right: 10px;
