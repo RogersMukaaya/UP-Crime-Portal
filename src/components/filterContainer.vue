@@ -18,7 +18,7 @@
         </div>
       </div>
     </div>
-    <div class="add-class">
+    <div class="add-class" @click="$emit('create-case')">
       <span class="material-icons">
         add
       </span>
