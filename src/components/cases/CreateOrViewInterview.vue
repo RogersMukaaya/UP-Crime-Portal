@@ -1,44 +1,74 @@
 <template>
   <div class="modal-background">
-    <div class="modal-content">
+    <div class="modal-content" :style="contentStyles">
       <span class="close-button" @click="$emit('close-modal')">
         <i class="material-icons">close</i>
       </span>
       <div class="modal-header">
-        <h1>Create a Scene</h1>
+        <h1>
+          {{
+            state == "details" ? "Interview Details" : "Create a New Interview"
+          }}
+        </h1>
       </div>
       <div class="modal-body">
-        <div class="select-dropdown">
-          <p class="label">Type</p>
-          <div class="select-dropdown-container">
-            <div class="select-items-container">
-              <div class="current-item">
-                <div class="current-item">
-                  <p>Vehicle</p>
-                </div>
-              </div>
-            </div>
-            <span class="material-icons">
-              expand_more
-            </span>
+        <div class="select-dropdown-description">
+          <div class="case-number interviewee">
+            <label class="label" for="name">Name of Interviewee</label>
+            <input
+              v-if="state == 'create'"
+              type="number"
+              name="name"
+              placeholder="Allan Mayambala"
+            />
+            <span v-else>Allan Mayambala</span>
+          </div>
+          <div class="description">
+            <template v-if="state == 'create'">
+              <button class="add">
+                Add Description
+              </button>
+            </template>
+            <template v-else>
+              <p class="label">Description</p>
+              <p class="description-text">
+                Dolore eu fugiat nulla pariatur. Excepteur sint oc non proidm...
+              </p>
+            </template>
           </div>
         </div>
-        <div class="case-number">
-            <label class="label" for="name">Case Number</label>
-            <input type="number" name="name" placeholder="33467" />
-        </div>
-        <div class="case-number">
+        <div :class="isShowNumberAndLocation">
+          <div class="case-number">
+            <label class="label" for="name">Interviewee Status</label>
+            <input
+              v-if="state == 'create'"
+              type="text"
+              name="name"
+              placeholder="Witness"
+            />
+            <span v-else>Witness</span>
+          </div>
+          <div class="case-number">
             <label class="label" for="name">Location</label>
-            <input type="type" name="name" placeholder="Kampala" />
+            <input
+              v-if="state == 'create'"
+              type="type"
+              name="name"
+              placeholder="Kampala"
+            />
+            <span v-else>Kampala</span>
+          </div>
         </div>
         <div class="row-inputs-date-time">
           <div class="case-date">
             <label class="label" for="date">Date of First Activity</label>
-            <input type="date" name="date" />
+            <input v-if="state == 'create'" type="date" name="date" />
+            <span v-else>3 / 21 / 2021</span>
           </div>
           <div class="case-date">
             <label class="label" for="time">Time of First Activity</label>
-            <input type="time" name="time" />
+            <input v-if="state == 'create'" type="time" name="time" />
+            <span v-else>10 : 30 PM</span>
           </div>
         </div>
         <div class="add-attachment">
@@ -55,7 +85,7 @@
           </div>
         </div>
         <div class="add-victims">
-          <p class="label">Created by</p>
+          <p class="label">People</p>
           <div class="add-victims-container">
             <div class="added-victims">
               <div class="avatar-wrapper">
@@ -68,9 +98,22 @@
                 </div>
               </div>
             </div>
-            <button class="add">
-              Edit
-            </button>
+          </div>
+        </div>
+        <div class="add-victims">
+          <p class="label">Secured by</p>
+          <div class="add-victims-container">
+            <div class="added-victims">
+              <div class="avatar-wrapper">
+                <div class="avatar">
+                  <i class="mdi mdi-account-circle"></i>
+                </div>
+                <div class="avatar-info">
+                  <p>Opio Gideon</p>
+                  <small>Officer</small>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -88,7 +131,34 @@
 
 <script>
 export default {
-  name: "CreateNewScene"
+  name: "CreateOrViewInterview",
+
+  props: {
+    state: {
+      type: String,
+      required: true
+    }
+  },
+
+  computed: {
+    contentStyles() {
+      if (this.state == "details") {
+        return "width:684px";
+      } else {
+        return "width:757px";
+      }
+    },
+
+    isShowNumberAndLocation() {
+      if (this.state == "create") {
+        return "row-number-location";
+      } else {
+        return " ";
+      }
+    }
+  },
+
+  methods: {}
 };
 </script>
 
@@ -97,15 +167,14 @@ export default {
 
 .modal-background {
   font-family: $display-font;
+  position: fixed;
   width: 100%;
-  position: absolute;
   z-index: 7;
   left: 0;
   top: 0;
   background-color: rgba($black, 0.3);
 
   .modal-content {
-    width: 757px;
     background-color: $white;
     margin: 80px auto;
     border-radius: 4px;
@@ -116,9 +185,13 @@ export default {
       margin: 25px;
     }
 
+    .close-button:hover {
+      cursor: pointer;
+    }
+
     .modal-header {
       position: relative;
-      padding: 85px 0 42px 35px;
+      padding: 45px 0 22px 35px;
 
       h1 {
         font-size: 24px;
@@ -129,114 +202,135 @@ export default {
     .modal-body {
       padding-left: 35px;
 
-        .select-dropdown {
-            display: flex;
-            flex-direction: column;
-            width: 600px;
+      span {
+        font-size: 14px;
+        font-weight: 400;
+        color: $tertiary;
+      }
 
-            .label {
-                margin: 0;
-                padding-bottom: 5px;
-                font-size: 14px;
-                font-weight: 600;
-                color: $secondary-dark;
-            }
+      .select-dropdown-description {
+        width: 600px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
 
-            .select-dropdown-container {
-                display: flex;
-                justify-content: space-between;
-                border: 1px solid $border;
-                border-radius: 4px;
-
-                .select-items-container {
-                    .current-item {
-                    p {
-                        margin-left: 16px;
-                        font-size: 14px;
-                        font-weight: 400;
-                        color: $tertiary;
-                    }
-                    }
-                }
-
-                span {
-                    padding: 12px;
-                    color: $secondary;
-                }
-            }
+        .label {
+          margin: 0;
+          padding-bottom: 5px;
+          font-size: 14px;
+          font-weight: 600;
+          color: $secondary-dark;
         }
 
-        .case-number {
-            display: flex;
-            flex-direction: column;
-            padding-right: 16px;
-            padding-top: 37px;
-
-            .label {
-                margin: 0;
-                padding-bottom: 5px;
-                font-size: 14px;
-                font-weight: 600;
-                color: $secondary-dark;
-            }
-
-            input {
-                width: 600px;
-                height: 47px;
-                border: 1px solid $border;
-                border-radius: 4px;
-                outline: none;
-                // padding-left: 16px;
-                padding: 0 16px;
-            }
+        p {
+          margin: 0;
         }
 
-        .scene-number {
+        .description {
           display: flex;
           flex-direction: column;
-          width: 134px;
-          padding-right: 16px;
 
-          .label {
-            margin: 0;
-            padding-bottom: 5px;
-            font-size: 14px;
-            font-weight: 600;
-            color: $secondary-dark;
+          .add {
+            width: 130px;
+            height: 32px;
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            padding: 4px 12px;
+            background: #ffffff;
+            border: 1px solid #e2e6e8;
+            border-radius: 4px;
           }
 
-          .scenes-count {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            width: 134px;
-            height: 47px;
-            border: 1px solid $border;
-            border-radius: 4px;
-            outline: none;
-            padding-left: 16px;
-
-            p {
-              font-size: 14px;
-              font-weight: 400;
-              color: $tertiary;
-            }
-
-            .add-scene {
-              width: 18px;
-              height: 18px;
-              margin: 0 16px;
-              border-radius: 50%;
-              color: $white;
-              border: none;
-              background-color: $secondary;
-            }
-
-            .add-scene:hover {
-              cursor: pointer;
-            }
+          .add:hover {
+            cursor: pointer;
+          }
+          .description-text {
+            font-size: 14px;
+            font-weight: 400;
+            color: $tertiary;
           }
         }
+      }
+
+      .row-number-location {
+        display: flex;
+        justify-content: space-between;
+        width: 600px;
+      }
+
+      .case-number {
+        display: flex;
+        flex-direction: column;
+        padding-top: 27px;
+
+        .label {
+          margin: 0;
+          padding-bottom: 5px;
+          font-size: 14px;
+          font-weight: 600;
+          color: $secondary-dark;
+        }
+
+        input {
+          height: 47px;
+          border: 1px solid $border;
+          border-radius: 4px;
+          outline: none;
+          // padding-left: 16px;
+          padding: 0 16px;
+        }
+      }
+
+      .interviewee {
+        padding-top: 0;
+      }
+
+      .scene-number {
+        display: flex;
+        flex-direction: column;
+        width: 134px;
+
+        .label {
+          margin: 0;
+          padding-bottom: 5px;
+          font-size: 14px;
+          font-weight: 600;
+          color: $secondary-dark;
+        }
+
+        .scenes-count {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          width: 134px;
+          height: 47px;
+          border: 1px solid $border;
+          border-radius: 4px;
+          outline: none;
+          padding-left: 16px;
+
+          p {
+            font-size: 14px;
+            font-weight: 400;
+            color: $tertiary;
+          }
+
+          .add-scene {
+            width: 18px;
+            height: 18px;
+            margin: 0 16px;
+            border-radius: 50%;
+            color: $white;
+            border: none;
+            background-color: $secondary;
+          }
+
+          .add-scene:hover {
+            cursor: pointer;
+          }
+        }
+      }
 
       .row-inputs-date-time {
         width: 600px;
@@ -247,8 +341,7 @@ export default {
           display: flex;
           flex-direction: column;
           width: 206px;
-          padding-right: 16px;
-          padding-top: 37px;
+          padding-top: 27px;
 
           .label {
             margin: 0;
@@ -259,7 +352,6 @@ export default {
           }
 
           input {
-            width: 100%;
             height: 47px;
             border: 1px solid $border;
             border-radius: 4px;
@@ -270,7 +362,7 @@ export default {
       }
 
       .add-attachment {
-        padding-top: 37px;
+        padding-top: 27px;
 
         .label {
           margin: 0;
@@ -314,7 +406,7 @@ export default {
       }
 
       .add-victims {
-        padding-top: 37px;
+        padding-top: 27px;
 
         .label {
           margin: 0;
@@ -386,7 +478,7 @@ export default {
     .modal-footer {
       display: flex;
       justify-content: flex-end;
-      padding: 24px 33px 32px 0;
+      padding: 14px 33px 32px 0;
 
       button {
         width: 107px;

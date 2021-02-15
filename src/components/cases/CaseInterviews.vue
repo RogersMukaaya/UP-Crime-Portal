@@ -1,27 +1,26 @@
 <template>
   <div class="case-card-container">
-    <case-scene-card
+    <case-interview-card
       v-for="(card, index) in cards"
       :key="index"
-      @show-scene-details="$emit('show-scene-details')"
+      @show-interview-details="$emit('show-interview-details')"
     />
   </div>
 </template>
 
 <script>
-import CaseSceneCard from "@/components/cases/CaseSceneCard.vue";
+import CaseInterviewCard from "@/components/cases/CaseInterviewCard.vue";
 
 export default {
-  name: "CaseScenes",
+  name: "CaseInterviews",
 
   components: {
-    "case-scene-card": CaseSceneCard
+    "case-interview-card": CaseInterviewCard
   },
 
   data: function() {
     return {
-      cards: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10.11, 12],
-      isCreateNewCase: false
+      cards: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10.11, 12]
     };
   }
 };

@@ -3,8 +3,8 @@
     <filter-container @create-case="createNewCase" />
     <div class="case-card-container">
       <case-card v-for="(card, index) in cards" :key="index" />
-      <create-case v-if="isCreateNewCase" @close-modal="closeCreateCaseModal" />
     </div>
+    <create-case v-if="isCreateNewCase" @close-modal="closeCreateCaseModal" />
   </div>
 </template>
 

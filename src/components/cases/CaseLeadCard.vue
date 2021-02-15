@@ -1,15 +1,21 @@
 <template>
-  <div class="card-container" @click="$emit('show-scene-details')">
+  <div class="card-container" @click="$emit('show-lead-details')">
     <div class="header">
       <div class="header-left">
-        <h1>Vehicle</h1>
-        <p>#33467</p>
+        <h1>Vehicle Check</h1>
+        <p>#9012</p>
       </div>
       <div class="date-badge">
         <p>1/25/2021</p>
       </div>
     </div>
     <div class="body">
+      <div class="secondary">
+        <span class="material-icons">
+          attachment
+        </span>
+        <p>5</p>
+      </div>
       <div class="secondary">
         <span class="material-icons">
           location_on
@@ -21,6 +27,12 @@
           access_time
         </span>
         <p>7:28 PM</p>
+      </div>
+      <div class="warning">
+        <span class="material-icons">
+          people
+        </span>
+        <p>6</p>
       </div>
     </div>
     <div class="footer">
@@ -34,7 +46,7 @@
         </div>
       </div>
       <div class="pending-badge">
-        <p>Released</p>
+        <p>Relevant</p>
       </div>
     </div>
   </div>
@@ -126,6 +138,12 @@ export default {
     .secondary {
       span {
         color: $secondary-dark;
+      }
+    }
+
+    .warning {
+      span {
+        color: $warning;
       }
     }
   }

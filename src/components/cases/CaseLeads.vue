@@ -1,21 +1,21 @@
 <template>
   <div class="case-card-container">
-    <case-scene-card
+    <case-lead-card
       v-for="(card, index) in cards"
       :key="index"
-      @show-scene-details="$emit('show-scene-details')"
+      @show-lead-details="$emit('show-lead-details')"
     />
   </div>
 </template>
 
 <script>
-import CaseSceneCard from "@/components/cases/CaseSceneCard.vue";
+import CaseLeadCard from "@/components/cases/CaseLeadCard.vue";
 
 export default {
-  name: "CaseScenes",
+  name: "CaseLeads",
 
   components: {
-    "case-scene-card": CaseSceneCard
+    "case-lead-card": CaseLeadCard
   },
 
   data: function() {

@@ -1,9 +1,9 @@
 <template>
-  <div class="card-container" @click="$emit('show-scene-details')">
+  <div class="card-container" @click="$emit('show-interview-details')">
     <div class="header">
       <div class="header-left">
-        <h1>Vehicle</h1>
-        <p>#33467</p>
+        <h1>Allan Mayambala</h1>
+        <p>Witness</p>
       </div>
       <div class="date-badge">
         <p>1/25/2021</p>
@@ -12,15 +12,21 @@
     <div class="body">
       <div class="secondary">
         <span class="material-icons">
+          attachment
+        </span>
+        <p>5</p>
+      </div>
+      <div class="secondary">
+        <span class="material-icons">
           location_on
         </span>
         <p>Kampala</p>
       </div>
-      <div class="secondary">
+      <div class="warning">
         <span class="material-icons">
-          access_time
+          people
         </span>
-        <p>7:28 PM</p>
+        <p>6</p>
       </div>
     </div>
     <div class="footer">
@@ -34,7 +40,7 @@
         </div>
       </div>
       <div class="pending-badge">
-        <p>Released</p>
+        <p>Recorded</p>
       </div>
     </div>
   </div>
@@ -126,6 +132,12 @@ export default {
     .secondary {
       span {
         color: $secondary-dark;
+      }
+    }
+
+    .warning {
+      span {
+        color: $warning;
       }
     }
   }
